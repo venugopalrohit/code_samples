@@ -10,7 +10,7 @@
 # to the end, the second word gets "aa" added to the end, the third word
 # in the sentence gets "aaa" added to the end, and so on.
 
-# Program incomplete. Need add trailing "a"s
+
 
 print("Please enter a sentence: ", end="")
 sentence = input()
@@ -25,7 +25,9 @@ for word in words:
         word = word[1:]
         word = word + first_cha + "ma"
 
-
+    word = word + trailing
+    print(word)
     trailing = trailing + "a"
 
-print(words)
+# Note that the original words list is not modified. If the intent is to have the goat latin accessible outside the
+# for loop, then use an enumeration to loop through the list and modify 'words' list in place
