@@ -10,6 +10,8 @@
 # to the end, the second word gets "aa" added to the end, the third word
 # in the sentence gets "aaa" added to the end, and so on.
 
+# Program incomplete. Need add trailing "a"s
+
 print("Please enter a sentence: ", end="")
 sentence = input()
 words = sentence.split(" ")
