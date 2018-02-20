@@ -4,7 +4,7 @@
 
 # The idea here is to have to pointers (indices) at either end of the list/array and move them towards the center
 # Depending on which side has the lesser sum of elements, the index at that end is moved.
-
+# Assuming the input array is non empty
 in_arr = [4,1,3,1,8,1]
 # Indices into the input array
 i = 0
@@ -28,7 +28,6 @@ while( i < j):
         # Here we need to check if the indices are next to each other (which indicates a perfect split)
         if((j - i) == 1):
             #Indices are next to each other, hence we've found a perfect split
-            a = i
             break
         else:
             # Here we have a choice of incrementing either i or j. Doesn't matter which
