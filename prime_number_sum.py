@@ -23,7 +23,7 @@ def is_prime(num):
     return True
 
 
-# Method to find the prime numbers that sum up to the given number
+# Method to find the prime numbers that sum up to the given number (odd numbers with no primes will return None)
 def primesum(A):
     # Only need to check till A/2 because the complement is already checked in the first half of the range
     # e.g. if number is 25, then (2 + 23) == (23 + 2), i.e you've already check out 23 once
@@ -31,5 +31,7 @@ def primesum(A):
         if (is_prime(i) and is_prime(A - i)):
             return (i, A - i)
 
+    return None
+
 # Main
-print(primesum(9))
+print(primesum(100299392))
