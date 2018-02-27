@@ -49,6 +49,6 @@ def find_longest_path(input_string):
 
 
 input_string = "dir\n\tsubdir\n\t\tsubdir\n\t\t\tsubdir\n\t\t\t\tfile.txt\n\tsubdir1\n\t\tsubdirdir1\n\t\t\tfile1.txt"
-input_array = ["dir", "subdir1", "subdirdir1", "file1.txt"]
+#input_array = ["dir", "subdir1", "subdirdir1", "file1.txt"]
 print(find_longest_path(input_string))
 
