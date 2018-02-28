@@ -30,6 +30,7 @@ def convert_to_string(input_number):
     if(is_neg):
         number_string += "-"
 
-    return(number_string)
+    return(number_string[::-1])
+    #return(''.join(reversed(number_string)))
 
 print(convert_to_string(12))
