@@ -15,10 +15,13 @@ def find_pairs(input_array, sum):
             for i in range(0, complement_hash[num]):
                 #print(num, -num)
                 pair_list.append((num, sum - num))
-        elif (sum - num) in complement_hash:
-            complement_hash[(sum-num)] += 1
         else:
-            complement_hash[(sum-num)] = 1
+            # Using the get method of the dictionary, which gives us flexibility to return 0
+            # when key is not present or value when key is present
+            # 'count' can be incremented to represent new frequency.
+            # This approach is cleaner than using conditionals to check if hash[sum-num] exists
+            count = complement_hash.get((sum-num), 0)
+            complement_hash[(sum - num)] = count + 1
 
     return pair_list
 

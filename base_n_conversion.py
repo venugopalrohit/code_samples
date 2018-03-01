@@ -37,7 +37,7 @@ def convert_to_number(representation, base):
 
 
 # This program assumes that the caller will faciliate the adjustment for negative integers
-convert_to_number("E1", 16)
-# convert_number_into_base(21, 2)
-# convert_number_into_base(21, 8)
-# convert_number_into_base(21, 16)
+# convert_to_number("E1", 16)
+convert_number_into_base(21, 2)
+convert_number_into_base(21, 8)
+convert_number_into_base(21, 16)
