@@ -27,6 +27,7 @@ def is_prime(num):
 def primesum(A):
     # Only need to check till A/2 because the complement is already checked in the first half of the range
     # e.g. if number is 25, then (2 + 23) == (23 + 2), i.e you've already check out 23 once
+    # in python 3, // represents integer division (which is why it is used in the loop below)
     for i in range(2, A // 2 + 1):
         if (is_prime(i) and is_prime(A - i)):
             return (i, A - i)
