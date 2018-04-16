@@ -84,6 +84,9 @@ def generate_adj_tile_list(mine_matrix, elem_row, elem_col):
 
 
 # Seed the grid using the mine list
+# 1. Mark all mine locations in the grid as True
+# 2. For each mine location - generate a list of adjacent locations in grid and increment the counter at that
+# location
 def seed_grid(game_grid, mine_list):
     # For each mine
     for mine_loc in mine_list:
@@ -96,11 +99,12 @@ def seed_grid(game_grid, mine_list):
 
         #For every adjacent tile that it not a mine, increment the value at that tile location
         for adj_tile_loc in adj_tiles:
+            # Make sure the tile being modified isn't a location with a mine
             if not(adj_tile_loc in mine_list):
                 game_grid[adj_tile_loc[0]][adj_tile_loc[1]] += 1
 
 
-    print(game_grid)
+    #print(game_grid)
 
 
 # Main
@@ -120,3 +124,7 @@ game_grid = [[0 for x in range(num_cols)] for y in range(num_rows)]
 # Seed the grid with the mines in the correct locations and the indicate the number of mines adjacent to the remaining
 # locations
 seed_grid(game_grid, mine_list)
+
+# Print final grid with mines and adjacency numbers
+for i in range(5):
+    print(game_grid[i])
