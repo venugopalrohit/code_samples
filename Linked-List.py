@@ -118,4 +118,4 @@ for i in number_2_array:
 
 print(number_2_string)
 
-print(str(int(number_1_string)+ int(number_2_string)))
+print((int(number_1_string)+ int(number_2_string)))

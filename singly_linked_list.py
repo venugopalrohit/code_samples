@@ -46,6 +46,7 @@ class List:
         p = self.head
         print("Printing List:")
         while(p != None):
-            print(p.get_data())
+            print(p.get_data(), end=" ")
             p = p.get_next()
+        print()
         
