@@ -7,15 +7,39 @@ def remove_duplicates(head_ptr):
     q = None
     while(p != None):
         if(p in node_hash.keys()):
-            # Node found in hash table. Delete this node
-            p = p.get_next()
+            # Node found in hash table. Now move pointer over sequence of repeating elements, or until end of list
+            while (p!= None and p in node_hash.keys()):
+                p = p.get_next()
+            # At unique element or end of list
             q.set_next(p)
-            pass
+
         else:
             # Node not found in hash table. Add this node to the hash table and move pointers forward
             node_hash[p] = 1
             q = p
             p = p.get_next()
+
+
+# Problem 2.1 - Remove duplicates from unsorted list but without using additional data structure
+# This method uses two pointers, current and runner. The runner pointer starts from current and checks are following
+# nodes for matches to current
+
+def remove_duplicates_2(head_ptr):
+    current = head_ptr
+
+    while(current != None):
+        runner = current
+
+        while(runner.get_next() != None):
+            if(runner.get_next().get_data() == current.get_data()):
+                runner.set_next(runner.get_next().get_next())
+            else:
+                runner = runner.get_next()
+
+        current = current.get_next()
+
+
+
 
 
 # Problem 2.2 - Remove kth to last element
@@ -137,9 +161,9 @@ def check_palindrome_using_stack(list_head):
     #print("Location of P: " + str(p.get_data()))
     #print(data_stack)
 
-    #We know that if p.next != None, then we have a list that has even number of elements
-    #If the length of the list is even, q has stopped one element before the middle two elements.
-    #Push the first of the middle element onto the stack
+    # We know that if p.next != None, then we have a list that has even number of elements
+    # If the length of the list is even, q has stopped one element before the middle two elements.
+    # Push the first of the middle element onto the stack
     if(p.get_next() != None):
         data_stack.append(q.get_data())
 
@@ -240,7 +264,7 @@ def find_intersecting_node(list_1, list_2):
 # Main
 # Sample List
 test_list = List()
-elem_list = [1,2,3,4,5,6,7,8]
+elem_list = [1,1,1,1,2,3,4,1]
 create_linked_list_from_array(test_list, elem_list)
 
 test_list.print_list()
@@ -248,8 +272,9 @@ test_list.print_list()
 
 print("Solution")
 # Problem 2.1
-#remove_duplicates(test_list.head)
-#test_list.print_list()
+# remove_duplicates(test_list.head)
+remove_duplicates_2(test_list.head)
+test_list.print_list()
 
 # Problem 2.2
 #print_kth_to_last_element(test_list.head, 2)
@@ -263,18 +288,18 @@ print("Solution")
 #print(check_palindrome_using_stack(test_list.head))
 
 # Problem 2.7
-joining_list = List()
-elem_list = [20, 30]
-create_linked_list_from_array(joining_list, elem_list)
-joining_list.print_list()
-
-create_intersecting_lists(test_list.head, 8, joining_list.head)
-test_list.print_list()
-joining_list.print_list()
-
-mock_list = List()
-elem_list = [1,2,3,4,5,6,7,8]
-create_linked_list_from_array(mock_list, elem_list)
-
-
-find_intersecting_node(test_list.head, joining_list.head)
+# joining_list = List()
+# elem_list = [20, 30]
+# create_linked_list_from_array(joining_list, elem_list)
+# joining_list.print_list()
+#
+# create_intersecting_lists(test_list.head, 8, joining_list.head)
+# test_list.print_list()
+# joining_list.print_list()
+#
+# mock_list = List()
+# elem_list = [1,2,3,4,5,6,7,8]
+# create_linked_list_from_array(mock_list, elem_list)
+#
+#
+# find_intersecting_node(test_list.head, joining_list.head)
