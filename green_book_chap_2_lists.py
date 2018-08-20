@@ -258,23 +258,74 @@ def find_intersecting_node(list_1, list_2):
 
     print("Intersection Node is: " + str(p.get_data()))
 
+# Extra problem to weave a single linked list
+# Example (works only for a linked list with an even number of elements)
+# if list is a1->a2....->an->b1->b2....bn, then the weaved list should be a1->b1->a2->b2->.....an->bn
+
+def weave_single_list(head_ptr):
+
+    # First find the mid-point using the two pointer method
+    fast_ptr = head_ptr
+    slow_ptr = head_ptr
+
+    while(fast_ptr != None and fast_ptr.get_next() != None):
+        slow_ptr = slow_ptr.get_next()
+        fast_ptr = fast_ptr.get_next().get_next()
+
+    # slow_ptr is the middle of the list. fast_ptr is either on the last element(for list with odd len or beyond it
+    # (for list with even length)
+
+    print(slow_ptr.get_data())
+    if(fast_ptr):
+        #print(fast_ptr.get_data())
+        print("List has odd number of elements - correct weaving is not possible - for now")
+        return
+
+    # Weaving method - we use 4 pointers
+    p1 = head_ptr
+    p2 = slow_ptr
+    t1 = p1.get_next()
+    t2 = p2.get_next()
+
+    while(True):
+        p1.set_next(p2)
+        # End condition
+        if(t2 == None):
+            break
+
+        p2.set_next(t1)
+
+        p1 = t1
+        t1 = t1.get_next()
+        p2 = t2
+        t2 = t2.get_next()
+
+    p2.set_next(None)
+
+
+
+
 
 
 
 # Main
 # Sample List
 test_list = List()
-elem_list = [1,1,1,1,2,3,4,1]
+elem_list = [1,2,3,4]
 create_linked_list_from_array(test_list, elem_list)
 
 test_list.print_list()
 
 
 print("Solution")
+
+weave_single_list(test_list.head)
+test_list.print_list()
+
 # Problem 2.1
 # remove_duplicates(test_list.head)
-remove_duplicates_2(test_list.head)
-test_list.print_list()
+# remove_duplicates_2(test_list.head)
+# test_list.print_list()
 
 # Problem 2.2
 #print_kth_to_last_element(test_list.head, 2)
